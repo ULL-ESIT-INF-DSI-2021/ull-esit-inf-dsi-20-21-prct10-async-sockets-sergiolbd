@@ -1,9 +1,20 @@
 import 'mocha';
 import {expect} from 'chai';
-import {add} from '../src/index';
+import {EventEmitter} from 'events';
+import {MessageEventEmitterClient} from '../src/eventEmitterClient';
 
-describe('', () => {
-  it('', () => {
-    expect(add(2, 3)).to.be.eq(5);
+describe('MessageEventEmitterClient', () => {
+  it('Should emit a message event once it gets a complete message', (done) => {
+    const socket = new EventEmitter();
+    const client = new MessageEventEmitterClient(socket);
+
+    client.on('message', (message) => {
+      expect(message).to.be.eql({'type': 'change', 'prev': 13, 'curr': 26});
+      done();
+    });
+
+    socket.emit('data', '{"type": "change", "prev": 13');
+    socket.emit('data', ', "curr": 26}');
+    socket.emit('data', '\n');
   });
 });
