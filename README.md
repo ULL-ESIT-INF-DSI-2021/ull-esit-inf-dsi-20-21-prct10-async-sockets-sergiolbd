@@ -23,11 +23,11 @@ Para hacer uso de esta código, lo más recomendable es llevar a cabo los siguie
   1. Abrir dos terminales
   2. Compilar el código mediante `tsc`
   3. Una de las terminales hará de **servidor**
-     1. Para ello ejecutar `node dist/Práctica/server/server.ts`
+     1. Para ello ejecutar `node dist/Practica/server/server.ts`
      2. Una vez ejecutado el comando anterior deberá mostrar un mensaje como `Waiting for clients to connect`
      3. En este punto ya tendremos nuestro servidor corriendo y a la espera de que se conecte algún cliente
   4. La otra terminal será la encargada de hacer del papel de **cliente**
-     1. Para ello ejecutar `node dist/Práctica/client/app.ts` acompañado del tipo de operación a relizar sobre el blog de notas
+     1. Para ello ejecutar `node dist/Practica/client/app.ts` acompañado del tipo de operación a relizar sobre el blog de notas
      2. Ejemplo: 
       ```bash 
       node dist/Práctica/client/app.js add --user="sergio" --title="Yellow Note" --body="Hello world" --color="yellow"
@@ -35,7 +35,7 @@ Para hacer uso de esta código, lo más recomendable es llevar a cabo los siguie
 
 **3. Ejercicio**
 Para el desarrollo de esta práctica, se ha generado en el directorio `src` un directorio `Práctica` el cual a su vez contiene otros dos directorios `server` y `client` en los están alojados los códigos desarrollados para cada caso.
-Lo primero de todo es desarrollar el servidor, para ello en [server.ts](src/Práctica/server/server.ts), creamos el servidor haciendo uso de `createServer((connection) => {...})` el cual devuelve un objeto `Server` el cual haremos que nuestro servicio se exponga en el puerto 603000 haciendo uso de `server.listen(60300, () => {})` una vez realizado lo siguiente ya se podría generar un cliente que conecte con nuestro servidor.  
+Lo primero de todo es desarrollar el servidor, para ello en [server.ts](src/Practica/server/server.ts), creamos el servidor haciendo uso de `createServer((connection) => {...})` el cual devuelve un objeto `Server` el cual haremos que nuestro servicio se exponga en el puerto 603000 haciendo uso de `server.listen(60300, () => {})` una vez realizado lo siguiente ya se podría generar un cliente que conecte con nuestro servidor.  
 Para desarrollar nuestro cliente se ha decido crear una función `clientRequest(req: RequestType)` la cual como se ve, recibe una petición en formato JSON generado mediante las opciones pasadas por linea de comados, con los comandos generados por yargs, y desde los cuales se produce la llamada a esta función `clientRequest`.   
 La función `clientRequest` establece una conexión con el puerto 60300 mediante `connect({port: 60300})` retornando un objeto `socket` que pasaremos al constructor de la clase `MessageEventEmitterClient` clase encargada de recibir las respuestas del cliente y emitir un evento de tipo `message` cuando el mensaje llegue completo, este evento que debe ser capturado en la función `clientResquest` haciendo uso `client.on('message', (data) => {...})` es en este punto donde el cliente detecta el evento y puede mostrar por pantalla el mensaje recibido por parte del cliente.
 

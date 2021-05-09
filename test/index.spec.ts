@@ -1,8 +1,8 @@
 import 'mocha';
 import {expect} from 'chai';
 import {EventEmitter} from 'events';
-import {MessageEventEmitterClient} from '../src/Práctica/client/eventEmitterClient';
-import {MessageEventEmitterServer} from '../src/Práctica/server/eventEmitterServer';
+import {MessageEventEmitterClient} from '../src/Practica/client/eventEmitterClient';
+import {MessageEventEmitterServer} from '../src/Practica/server/eventEmitterServer';
 
 describe('MessageEventEmitterClient', () => {
   it('Should emit a message event once it gets a complete message', (done) => {

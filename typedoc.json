@@ -1,6 +1,6 @@
 {
   "entryPoints": [
-    "./src/Práctica"
+    "./src/Practica"
   ], 
   "out": "docs"
 }
