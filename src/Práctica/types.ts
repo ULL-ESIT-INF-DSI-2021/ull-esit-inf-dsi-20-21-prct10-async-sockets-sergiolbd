@@ -8,6 +8,9 @@ export type note = {
   color?: string,
 }
 
+/**
+ * Tipo de dato para elaborar una petición
+ */
 export type RequestType = {
   type: 'add' | 'update' | 'remove' | 'read' | 'list';
   user?: string;
@@ -17,6 +20,9 @@ export type RequestType = {
   color?: string;
 }
 
+/**
+ * Tipo de dato para elaborar una respuesta
+ */
 export type ResponseType = {
   type: 'add' | 'update' | 'remove' | 'read' | 'list';
   success: boolean;

@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Modificación</title>
-	<meta name="description" content="Documentation for Modificación">
+	<title>practica10</title>
+	<meta name="description" content="Documentation for practica10">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script async src="assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">Modificación</a>
+					<a href="index.html" class="title">practica10</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -50,7 +50,7 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<h1>Modificación</h1>
+			<h1>practica10</h1>
 		</div>
 	</div>
 </header>
@@ -58,86 +58,34 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#colecciones-genéricas-httpshowtodoinjavacomtypescriptmaps" id="colecciones-genéricas-httpshowtodoinjavacomtypescriptmaps" style="color: inherit; text-decoration: none;">
-					<h1>Colecciones genéricas (<a href="https://howtodoinjava.com/typescript/maps/">https://howtodoinjava.com/typescript/maps/</a>)</h1>
+				<a href="#práctica-10-implementación-de-un-cliente-y-un-servidor-de-la-aplicación-de-procesamiento-de-notas-mediante-sockets-en-nodejs" id="práctica-10-implementación-de-un-cliente-y-un-servidor-de-la-aplicación-de-procesamiento-de-notas-mediante-sockets-en-nodejs" style="color: inherit; text-decoration: none;">
+					<h1>Práctica 10: implementación de un cliente y un servidor de la aplicación de procesamiento de notas mediante Sockets en Node.js</h1>
 				</a>
+				<p><a href="https://github.com/ULL-ESIT-INF-DSI-2021/ull-esit-inf-dsi-20-21-prct10-async-sockets-sergiolbd/actions/workflows/node.js.yml"><img src="https://github.com/ULL-ESIT-INF-DSI-2021/ull-esit-inf-dsi-20-21-prct10-async-sockets-sergiolbd/actions/workflows/node.js.yml/badge.svg?branch=master" alt="Test"></a>
+					<a href="https://sonarcloud.io/dashboard?id=ULL-ESIT-INF-DSI-2021_ull-esit-inf-dsi-20-21-prct10-async-sockets-sergiolbd"><img src="https://sonarcloud.io/api/project_badges/measure?project=ULL-ESIT-INF-DSI-2021_ull-esit-inf-dsi-20-21-prct10-async-sockets-sergiolbd&metric=alert_status" alt="Quality Gate Status"></a>
+				<a href="https://coveralls.io/github/ULL-ESIT-INF-DSI-2021/ull-esit-inf-dsi-20-21-prct10-async-sockets-sergiolbd?branch=master"><img src="https://coveralls.io/repos/github/ULL-ESIT-INF-DSI-2021/ull-esit-inf-dsi-20-21-prct10-async-sockets-sergiolbd/badge.svg?branch=master" alt="Coverage Status"></a>  </p>
+				<p><strong>1. Introducción</strong>
+					En esta segunda práctica se nos solicita aplicar el funcionamiento de la aplicación realizada en la <strong>práctica 8</strong>, sobre la cual se debe escribir un servidor y un cliente haciendo uso de los sockets proporcionados por el módulo <code>net</code> de node.js.
+				Por ello el funcionamiento que se debe conseguir es que desde el cliente y mediante <code>yargs</code> ejecutemos un comando de los descritos en la práctica 8 (<code>add, modify, remote, list, add</code>) y el cual se manda al servidor que es el encargado de llevar el procesamiento de dicho comando consiguiendo en cada caso un comportamiento determinado, todo ello haciendo uso de sockets.  </p>
+				<p><strong>2. Material usado</strong></p>
 				<ul>
-					<li><p><strong>Map&lt;K, V&gt;</strong>: Permite definir un mapa cuyas claves son de tipo K y sus valores de tipo V.</p>
-						<ul>
-							<li><p>Crear un MAP --&gt; <code>let myMap = new Map([[key, value], [key2, valor2]])</code></p>
-							</li>
-							<li><p>Acceder a la clave --&gt; <code>myMap.keys()</code></p>
-							</li>
-							<li><p>Acceder al valor --&gt; <code>myMap.values()</code></p>
-							</li>
-							<li><p>Añadir elemento --&gt; <code>myMap.set(&#39;x&#39;, &#39;y&#39;)</code></p>
-							</li>
-							<li><p>Encontrar un elemento dada su clave --&gt; <code>myMap.get(&#39;x&#39;)</code></p>
-							</li>
-							<li><p>Encontrar la existencia de un elemento --&gt; <code>myMap.has(&#39;x&#39;)</code></p>
-							</li>
-							<li><p>Eliminar --&gt; <code>myMap.delete(&#39;x&#39;)</code></p>
-							</li>
-							<li><p>Limpiar --&gt; <code>myMap.clear()</code></p>
-							</li>
-							<li><p>Tamaño --&gt; <code>myMap.size</code></p>
-							</li>
-							<li><p>Iterar sobre el mapa: </p>
-								<pre><code class="language-typescript"><span style="color: #000000">  </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Map</span><span style="color: #000000">();</span>
-
-<span style="color: #000000">  </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Lokesh&quot;</span><span style="color: #000000">, </span><span style="color: #098658">37</span><span style="color: #000000">);</span>
-<span style="color: #000000">  </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;Raj&quot;</span><span style="color: #000000">, </span><span style="color: #098658">35</span><span style="color: #000000">);</span>
-<span style="color: #000000">  </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;John&quot;</span><span style="color: #000000">, </span><span style="color: #098658">40</span><span style="color: #000000">);</span>
-<span style="color: #000000">  </span>
-<span style="color: #000000">  </span><span style="color: #008000">//Iterate over map keys</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">for</span><span style="color: #000000"> (</span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">key</span><span style="color: #000000"> </span><span style="color: #0000FF">of</span><span style="color: #000000"> </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">.</span><span style="color: #795E26">keys</span><span style="color: #000000">()) {</span>
-<span style="color: #000000">      </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">key</span><span style="color: #000000">);                   </span><span style="color: #008000">//Lokesh Raj John</span>
-<span style="color: #000000">  }</span>
-<span style="color: #000000">  </span>
-<span style="color: #000000">  </span><span style="color: #008000">//Iterate over map values</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">for</span><span style="color: #000000"> (</span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">value</span><span style="color: #000000"> </span><span style="color: #0000FF">of</span><span style="color: #000000"> </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">.</span><span style="color: #795E26">values</span><span style="color: #000000">()) {</span>
-<span style="color: #000000">      </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">value</span><span style="color: #000000">);                 </span><span style="color: #008000">//37 35 40</span>
-<span style="color: #000000">  }</span>
-<span style="color: #000000">  </span>
-<span style="color: #000000">  </span><span style="color: #008000">//Iterate over map entries (RECORRER ELEMENTO A ELEMENTO)</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">for</span><span style="color: #000000"> (</span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">entry</span><span style="color: #000000"> </span><span style="color: #0000FF">of</span><span style="color: #000000"> </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">.</span><span style="color: #795E26">entries</span><span style="color: #000000">()) {</span>
-<span style="color: #000000">      </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">entry</span><span style="color: #000000">[</span><span style="color: #098658">0</span><span style="color: #000000">], </span><span style="color: #001080">entry</span><span style="color: #000000">[</span><span style="color: #098658">1</span><span style="color: #000000">]);    </span><span style="color: #008000">//&quot;Lokesh&quot; 37 &quot;Raj&quot; 35 &quot;John&quot; 40</span>
-<span style="color: #000000">  }</span>
-<span style="color: #000000">  </span>
-<span style="color: #000000">  </span><span style="color: #008000">//Using object destructuring</span>
-<span style="color: #000000">  </span><span style="color: #AF00DB">for</span><span style="color: #000000"> (</span><span style="color: #0000FF">let</span><span style="color: #000000"> [</span><span style="color: #001080">key</span><span style="color: #000000">, </span><span style="color: #001080">value</span><span style="color: #000000">] </span><span style="color: #0000FF">of</span><span style="color: #000000"> </span><span style="color: #001080">nameAgeMapping</span><span style="color: #000000">) {</span>
-<span style="color: #000000">      </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">key</span><span style="color: #000000">, </span><span style="color: #001080">value</span><span style="color: #000000">);            </span><span style="color: #008000">//&quot;Lokesh&quot; 37 &quot;Raj&quot; 35 &quot;John&quot; 40</span>
-<span style="color: #000000">  } </span>
-</code></pre>
-							</li>
+					<li><strong>GitHub Actions:</strong><ul>
+							<li>Test</li>
+							<li>SonarCloud</li>
+							<li>Coveralls</li>
 						</ul>
 					</li>
-					<li><p><strong>ReadonlyMap&lt;K, V&gt;</strong>: Permite definir un Map que no puede modificarse.</p>
-					</li>
-				</ul>
-				<ul>
-					<li><strong>Set<T></strong>: Permite definir un conjunto cuyos elementos son de tipo T.<ul>
-							<li>Crear un set --&gt; <code>let myset = new Set()</code></li>
-							<li>Añadir elemento --&gt; <code>set.add()</code></li>
-							<li>Comprobar la existencia de un elemento --&gt; <code>set.has()</code></li>
-							<li>Eliminar --&gt; <code>set.delete(x)</code></li>
-							<li>Limpiar --&gt; <code>set.clear()</code></li>
-							<li>Tamaño --&gt; <code>set.size</code></li>
-							<li>Iterar sobre un set: <ul>
-									<li><code>for (let currentNumber of set) { currentNumber contiene un número y no un índice}</code></li>
-									<li><code>set.forEach( function(value) {console.log(value)})</code></li>
-								</ul>
-							</li>
+					<li><strong>Node.js:</strong><ul>
+							<li><a href="https://nodejs.org/dist/latest-v16.x/docs/api/net.html">Módulo <code>net</code></a></li>
+							<li><a href="https://nodejs.org/dist/latest-v16.x/docs/api/events.html#events_class_eventemitter">Clase <code>EventEmitter</code> del módulo <code>Events</code></a></li>
 						</ul>
 					</li>
+					<li>yargs</li>
+					<li>chalk</li>
 				</ul>
-				<ul>
-					<li><strong>ReadonlySet<T></strong>: Permite definir un conjunto no modificable.
-						<a href="#modificacion-dsi" id="modificacion-dsi" style="color: inherit; text-decoration: none;">
-							<h1>Modificacion-DSI</h1>
-						</a>
-					</li>
-				</ul>
+				<p><strong>3. Modo ejecución</strong></p>
+				<p><strong>3. Ejercicio</strong></p>
+				<p><strong>4. Ejecicuión</strong></p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -146,13 +94,31 @@
 					<li class=" ">
 						<a href="modules.html">Exports</a>
 					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/client_app.html">client/app</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/client_clients.html">client/clients</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/client_eventemitterclient.html">client/event<wbr>Emitter<wbr>Client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/server_eventemitterserver.html">server/event<wbr>Emitter<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/server_note.html">server/note</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/server_server.html">server/server</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/types.html">types</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="classes/randomnumber.html" class="tsd-kind-icon">Random<wbr>Number</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
@@ -163,10 +129,11 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
 			</ul>
 		</div>
 	</div>

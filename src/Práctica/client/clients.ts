@@ -1,35 +1,45 @@
 import {connect} from 'net';
 import {RequestType, ResponseType} from '../types';
-import * as yargs from 'yargs';
+import {MessageEventEmitterClient} from './eventEmitterClient';
 const chalk = require('chalk');
 
 const error = chalk.bold.red;
 const informative = chalk.bold.green;
 
+/**
+ * Función la cual recibe la petición a realizar ya en formato RequestType
+ * generada por los distintos comandos generados con yargs desde donde se produce
+ * la llamada a esta función cliente
+ * @param {RequestType} req Petición
+ */
 export function clientRequest(req: RequestType) {
-  const client = connect({port: 60300});
+  const socket = connect({port: 60300});
+  const client = new MessageEventEmitterClient(socket);
 
-  client.write(JSON.stringify(req), (err) => {
+  /**
+   * Escribir mensaje en el socket para que sea recepcionado por el servidor
+   */
+  socket.write(JSON.stringify(req) + '\n', (err) => {
     if (err) {
       console.log(`Request could not be made: ${err.message}`);
-    } else {
-      client.end();
     }
   });
 
-  let data = '';
-  client.on('data', (chunk) => {
-    data+=chunk;
-  });
-
-  client.on('end', () => {
-    const res: ResponseType = JSON.parse(data);
+  /**
+   * Cliente recibe evento 'message' generado cuando llega una respuesta completa,
+   * esta es mostrada por pantalla
+   */
+  client.on('message', (data) => {
+    const res: ResponseType = data;
     res.message.forEach((mes) => {
       colorsprint(mes?.[1] as string, mes?.[0] as string);
     });
   });
 
-  client.on('error', (err) => {
+  /**
+   * Muestra el mensaje generado por el evento 'error'
+   */
+  socket.on('error', (err) => {
     console.log(err.message);
   });
 }
@@ -54,4 +64,3 @@ function colorsprint(color: string, text: string) {
   }
 }
 
-// yargs.parse();
