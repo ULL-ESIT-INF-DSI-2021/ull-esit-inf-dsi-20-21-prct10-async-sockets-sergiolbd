@@ -67,4 +67,4 @@ connection.end();
 A demás de todo lo anterior el servidor es capaz de detectar errores y mostrarlos por pantalla y detectar cuando se cierra dicha conexión.
 
 **4. Ejemplo**  
-[Prueba1](media/Prueba1.png)
+![Prueba1](media/Prueba1.png)
